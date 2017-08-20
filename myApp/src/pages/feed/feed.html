@@ -15,37 +15,37 @@
 
 <ion-content padding>
 
-  <ion-card>
+  <ion-card *ngFor="let filme of lista_filmes" >
 
-  <ion-item>
-    <ion-avatar item-start>
-      <img src="assets/img/marty-avatar.png">
-    </ion-avatar>
-    <h2 class="feed-title">{{ nome_usuario }}</h2>
-    <p class="feed-date">19 Agosto, 2017</p>
-  </ion-item>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/img/marty-avatar.png">
+      </ion-avatar>
+      <h2 class="feed-title">{{ filme.original_title }}</h2>
+      <p class="feed-date">{{ filme.release_date }}</p>
+    </ion-item>
 
-  <img src="assets/img/advance-card-bttf.png">
+    <img [src]="'https://image.tmdb.org/t/p/w300/' + filme.backdrop_path">
 
-  <ion-card-content>
-    <p>Criando a primeira App</p>
-  </ion-card-content>
+    <ion-card-content>
+      <p>{{ filme.overview }}</p>
+    </ion-card-content>
 
-  <ion-row>
-    <ion-col >
-      <button ion-button icon-left clear small>
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
         <ion-icon name="thumbs-up"></ion-icon>
-        <div>12 Likes</div>
+        <div>{{ obj_feed.qnt_likes }} Likes</div>
       </button>
-    </ion-col>
-    <ion-col >
-      <button ion-button icon-left clear small>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
         <ion-icon name="text"></ion-icon>
-        <div>4 Comments</div>
+        <div>{{ obj_feed.qnt_comments }} Comments</div>
       </button>
-    </ion-col>
-  </ion-row>
+      </ion-col>
+    </ion-row>
 
-</ion-card>
+  </ion-card>
 
 </ion-content>

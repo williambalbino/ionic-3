@@ -1,3 +1,4 @@
+import { MovieProvider } from './../../providers/movie/movie';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -12,14 +13,38 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @Component({
   selector: 'page-feed',
   templateUrl: 'feed.html',
+  providers: [
+    MovieProvider
+  ]
 })
 export class FeedPage {
-  public nome_usuario:string = "William Balbino";
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  
+  obj_feed = {
+    nome: "William Balbino",
+    data: "19 Agosto, 2017",
+    descricao: "Criando a primeira App",
+    qnt_likes: 10,
+    qnt_comments: 14
   }
 
+  lista_filmes = new Array<any>();
+  obj = {}
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    private movieProvider: MovieProvider) {
+  }
+  
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FeedPage');
+    this.movieProvider.getLatestMovies().subscribe(
+      data=>{
+        const response = (data as any);
+        const obj_retorno = JSON.parse(response._body);
+        this.lista_filmes = obj_retorno.results;
+        console.log(obj_retorno);
+      }, error => {
+        console.log(error);
+      }
+    )
   }
 
 }
