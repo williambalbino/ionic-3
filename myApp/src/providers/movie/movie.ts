@@ -21,4 +21,6 @@ export class MovieProvider {
     return this.http.get(this.baseApiPath + "/movie/popular?api_key=05edef0ce288a710a7751acf9da1dc30")
   }
 
+  
+
 }

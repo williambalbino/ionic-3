@@ -1,3 +1,4 @@
+import { Facebook } from '@ionic-native/facebook';
 import { Usuario } from './../../model/usuario';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { TabsPage } from './../tabs/tabs';
@@ -12,7 +13,7 @@ export class LoginPage {
 
   usuario = {} as Usuario;
 
-  constructor(public navCtrl: NavController, private afAuth: AngularFireAuth) {
+  constructor(public navCtrl: NavController, private afAuth: AngularFireAuth, private facebook: Facebook) {
   }
   
   async login(usuario: Usuario){
@@ -25,4 +26,7 @@ export class LoginPage {
       alert('Usuario Invalido!');
     })
   }
+
+  
+ 
 }

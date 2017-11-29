@@ -7,14 +7,14 @@
 <ion-content padding>
   <ion-list>
     <ion-item-sliding *ngFor="let f of filmes | async">
-      <ion-item >
+      <ion-item>
           {{ f.original_title }}
           {{ f.release_date }}
       </ion-item>
 
           <ion-item-options side="right">
-            <button ion-button (click)="favorite(item)">Favorite</button>
-            <button ion-button color="danger" (click)="share(item)">Share</button>
+            <button ion-button color="danger">Remover
+              <ion-icon name="trash"></ion-icon></button>
           </ion-item-options>
       
 

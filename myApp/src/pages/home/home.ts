@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
@@ -11,7 +11,7 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  filmes: Observable<any>;
+  filmes: Observable<any[]>;
 
   constructor(public navCtrl: NavController, private db: AngularFireDatabase,
      private afAuth: AngularFireAuth) {
@@ -21,6 +21,10 @@ export class HomePage {
        })
       // var usuario = this.afAuth.auth.currentUser.uid;
       // this.filmes = db.list('movies' + usuario);
+  }
+
+  remover(filme){
+      
   }
 
 }

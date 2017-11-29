@@ -1,3 +1,4 @@
+
 import { CadastroPage } from './../pages/cadastro/cadastro';
 import { LoginPage } from './../pages/login/login';
 import { IntroPageModule } from './../pages/intro/intro.module';
@@ -21,17 +22,17 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {FeedPageModule} from '../pages/feed/feed.module';
 import { MovieProvider } from '../providers/movie/movie';
-
+import { Facebook } from  '@ionic-native/facebook';
 
 
 
   var config = {
-    apiKey: "AIzaSyAkAmW1PYkzQVEdaXyWudD6tGMuV3KkkW4",
-    authDomain: "app-tap.firebaseapp.com",
-    databaseURL: "https://app-tap.firebaseio.com",
-    projectId: "app-tap",
-    storageBucket: "app-tap.appspot.com",
-    messagingSenderId: "950709933917"
+    apiKey: "AIzaSyAKDtSyRiiJegcnJ4hGkMdZUS3zeD3-iqI",
+    authDomain: "app-movies-bc91d.firebaseapp.com",
+    databaseURL: "https://app-movies-bc91d.firebaseio.com",
+    projectId: "app-movies-bc91d",
+    storageBucket: "",
+    messagingSenderId: "756535986479"
   };
   
 
@@ -71,7 +72,8 @@ import { MovieProvider } from '../providers/movie/movie';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MovieProvider,
-    AngularFireAuth
+    AngularFireAuth,
+    Facebook
   ]
 })
 export class AppModule {}

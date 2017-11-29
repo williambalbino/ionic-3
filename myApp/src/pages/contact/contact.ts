@@ -15,7 +15,7 @@ export class ContactPage {
 
   logout(){
     this.afAuth.auth.signOut;
-    this.navCtrl.push(LoginPage);
+    this.navCtrl.setRoot(LoginPage);
   }
 
 

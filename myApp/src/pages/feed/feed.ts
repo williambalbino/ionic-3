@@ -53,4 +53,11 @@ export class FeedPage {
     })
   }
 
+  excluir(key){
+    var index = this.lista_filmes.indexOf(key, 0);
+    if (index > -1) {
+       this.lista_filmes.splice(index, 1);
+    }
+  }
+
 }
