@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page1">
+  <ion-item id="email">
+    <ion-label floating>Email</ion-label>
+    <ion-input type="text" required [(ngModel)]="usuario.email"></ion-input>
+  </ion-item>
+  <ion-item id="senha">
+    <ion-label floating>Senha</ion-label>
+    <ion-input type="password" required [(ngModel)]="usuario.senha"></ion-input>
+  </ion-item>
+  <button id="salvar" (click)="login(usuario)" ion-button outline color="positive" style="border-radius:25px 25px 25px 25px;">
+    Login
+  </button>
+  <button id="cadastro-button6" ion-button clear color="positive" icon-left>
+    <ion-icon name="google"></ion-icon>
+    Google
+  </button>
+  <button id="cadastro-button5" ion-button clear color="positive" icon-left>
+    <ion-icon name="facebook"></ion-icon>
+    Facebook
+  </button>
+</ion-content>

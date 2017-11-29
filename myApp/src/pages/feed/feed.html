@@ -33,15 +33,15 @@
 
     <ion-row>
       <ion-col>
-        <button ion-button icon-left clear small>
+        <button ion-button icon-left clear small (click)="salvar(filme)">
         <ion-icon name="thumbs-up"></ion-icon>
-        <div>{{ obj_feed.qnt_likes }} Likes</div>
+        <div>Salvar</div>
       </button>
       </ion-col>
       <ion-col>
-        <button ion-button icon-left clear small>
-        <ion-icon name="text"></ion-icon>
-        <div>{{ obj_feed.qnt_comments }} Comments</div>
+        <button ion-button icon-left clear small (click)="excluir(filme)">
+        <ion-icon name="thumbs-down"></ion-icon>
+        <div>Excluir</div>
       </button>
       </ion-col>
     </ion-row>

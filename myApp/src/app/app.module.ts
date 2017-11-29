@@ -1,9 +1,16 @@
+import { CadastroPage } from './../pages/cadastro/cadastro';
+import { LoginPage } from './../pages/login/login';
 import { IntroPageModule } from './../pages/intro/intro.module';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
+
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -15,20 +22,39 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {FeedPageModule} from '../pages/feed/feed.module';
 import { MovieProvider } from '../providers/movie/movie';
 
+
+
+
+  var config = {
+    apiKey: "AIzaSyAkAmW1PYkzQVEdaXyWudD6tGMuV3KkkW4",
+    authDomain: "app-tap.firebaseapp.com",
+    databaseURL: "https://app-tap.firebaseio.com",
+    projectId: "app-tap",
+    storageBucket: "app-tap.appspot.com",
+    messagingSenderId: "950709933917"
+  };
+  
+
+
 @NgModule({
   declarations: [
     MyApp,
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    LoginPage,
+    CadastroPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     FeedPageModule, 
     IntroPageModule,
-    HttpModule
+    HttpModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(config),
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -36,13 +62,16 @@ import { MovieProvider } from '../providers/movie/movie';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    LoginPage,
+    CadastroPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MovieProvider
+    MovieProvider,
+    AngularFireAuth
   ]
 })
 export class AppModule {}

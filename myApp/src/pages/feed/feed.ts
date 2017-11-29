@@ -1,3 +1,6 @@
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Usuario } from './../../model/usuario';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { MovieProvider } from './../../providers/movie/movie';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -19,21 +22,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FeedPage {
   
-  obj_feed = {
-    nome: "William Balbino",
-    data: "19 Agosto, 2017",
-    descricao: "Criando a primeira App",
-    qnt_likes: 10,
-    qnt_comments: 14
-  }
-
-  lista_filmes = new Array<any>();
+    lista_filmes = new Array<any>();
   obj = {}
   
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    private movieProvider: MovieProvider) {
+    private movieProvider: MovieProvider, private angularFire: AngularFireDatabase,
+    private afAuth: AngularFireAuth) {
   }
   
+  usuario = {} as Usuario;
+
   ionViewDidLoad() {
     this.movieProvider.getLatestMovies().subscribe(
       data=>{
@@ -45,6 +43,14 @@ export class FeedPage {
         console.log(error);
       }
     )
+  }
+
+  async salvar(filme){
+    var usuario = this.afAuth.auth.currentUser.uid;
+    this.angularFire.list('/movies/' + usuario).push(filme)
+    .then(t => {
+      alert('Filme Salvo!');
+    })
   }
 
 }
